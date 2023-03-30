@@ -1,0 +1,78 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bakka Kantina</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+        <link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='styles/main.css') }}"
+        >
+        <script>
+            let DagPlan = [{% for dag in dager %} ["{{dag.day}}", "{{dag.dishname}}", "{{dag.price}}", {{dag.week}}], {% endfor %}];
+            let smRetter = [{% for small in smretter %} ["{{small.name}}","{{small.price}}"], {% endfor %}];
+            
+        </script>
+        <script>
+            console.log(DagPlan)
+            console.log(smRetter)
+        </script>
+        <!-- I hate all people of all races of all worlds. I am an edgy edgelord and the coolest sigma in the universe. Morbius is my favorite movie and it has my favorite scene. You know the one where Morbius stops the fight, says "It's morbin time!" and then morbed all over the bad guys! -->
+</head>
+<body>
+    <div id="container">
+        <div id="nav">
+            <a href="{{url_for('index')}}" class="link">
+                <span id="head">Bakka Kantina</span>
+            </a>
+        </div>
+        <span id="week">Uke 49</span>
+        <div id="plan">
+            <div class="lower" id="dag1">
+                <span class="dagnavn2 left">Mandag</span>
+                <div class="rettbox2">
+                    <div></div>
+                    <span class="rett2 left">Mat</span>
+                    <span class="pris left"> kr 45,-</span>
+                </div>
+            </div>
+            <div id="main" class="dag2">
+                <span id="dagnavn" class="focus">Tirsdag</span>
+                <div class="rettbox1">
+                    <span id="rett" class="focus">Mat</span>
+                    <span id="pris" class="focus"> kr 45,-</span>
+                </div>
+            </div>
+            <div class="lower" id="dag3">
+                <span class="dagnavn2 next">Onsdag</span>
+                <div class="rettbox2">
+                    <span class="rett2 next">Mat</span>
+                    <span class="pris next"> kr 45,-</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="meny-layout">
+            <span>Andre varer</span>
+            <div id="meny">
+                <div>
+
+                    {% for small in smretter %}
+                        <div class="listes">
+                            <div>{{ small.name }}</div>
+                            <div>{{ small.price }} kr</div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div id="footer">
+            <span class="footertext">Bare for ansatte:</span>
+            <a href="{{url_for('login')}}" class="footertext">
+                <img src="{{ url_for('static', filename='img/settings.png') }}">
+            </a>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script/main.js') }}" ></script>
+</body>
+</html>

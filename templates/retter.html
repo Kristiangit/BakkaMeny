@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bakka Kantina - Logg inn</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+        <link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='styles/login.css') }}">
+        <!-- I hate all people of all races of all worlds. I am an edgy edgelord and the coolest sigma in the universe. Morbius is my favorite movie and it has my favorite scene. You know the one where Morbius stops the fight, says "It's morbin time!" and then morbed all over the bad guys! Greatest scene in cinema!-->
+        <script>
+            let DagPlan = [{% for dag in dager %} ["{{dag.day}}", "{{dag.dishname}}", "{{dag.price}}", {{dag.week}}], {% endfor %}];
+            let smRetter = [{% for small in smretter %} ["{{small.name}}","{{small.price}}"], {% endfor %}];
+            
+        </script>
+        <script>
+            console.log(DagPlan)
+            console.log(smRetter)
+        </script>
+
+    </head>
+
+<body>
+    <div id="container">
+        <div id="nav">
+            <a href="{{url_for('index')}}" class="link">
+                <span id="head">Bakka Kantina</span>
+            </a>
+        </div>
+            {% for message in get_flashed_messages() %}
+        <div>
+                {{ message }}
+        </div>
+            {% endfor %}
+
+        <div class="rettbox1">
+            <select name="ch-form" id="form-valg" value="1" onchange="ChangeForm()">
+                <option value="0">Velge rett for menyplan</option>
+                <option value="1">Lagre rett og menyplan</option>
+                <!-- <option value="1">Lagre rett</option> -->
+                <option value="2">Lagre ekstraprodukter</option>
+            </select>
+            <br>
+            <div id="DagForm" class="formses">
+                <form action="/retter" method="POST" class="menyform">
+                    {{ dagForm.hidden_tag() }}
+
+                    {{ dagForm.week.label }}
+                    {{ dagForm.week() }}
+                    <br>
+                    {{ dagForm.day.label }}
+                    {{ dagForm.day() }}
+                    <br>
+                    {{ dagForm.dish.label }}
+                    {{ dagForm.dish() }}
+                    <br><br>
+                    {{ dagForm.submit() }}
+                </form>
+            </div>
+            <br><br>
+            <div id="dager" class="listes">
+                {% for dag in dager %}
+                <div class="item">
+                    <span>{{ dag.week }} {{ dag.day }}</span>
+                    <div>
+                    <span>
+                        {{ dag.dishname }} - {{ dag.price }}
+                    </span> 
+                </div>
+                    <div>
+                    <a href="{{ url_for('dUpdate', id=dag.id)}}">Endre</a>
+                    <a href="{{ url_for('dDelete', id=dag.id)}}">Slett</a>
+                    </div>
+                </div>
+                {% endfor %}
+                <br>
+            </div>
+            <div id="hovedform" class="formses">
+                <form  action="/retter" method="post" name="add" class="menyform">
+                    {{ hForm.hidden_tag() }}
+                    {{ dagForm.week.label }}
+                    {{ dagForm.week() }}
+                    <br>
+                    {{ dagForm.day.label }}
+                    {{ dagForm.day() }}
+                    <br>
+                    {{ hForm.name.label }}
+                    {{ hForm.name() }}
+                    <br> <br>
+
+                    <input type="button" value="Finn bilde på nett" onclick="imageSearch()"></input>
+                    <img src="https://www.minecraft.net/content/dam/games/minecraft/screenshots/1-18-2-release-header.jpg" alt="">
+                    <br><br>
+                    {{ hForm.price.label }}
+                    {{ hForm.price() }}
+                    <br><br>
+                    {{ hForm.submit() }}
+
+                </form>
+                <br>
+            </div>
+            <div id="mains" class="listes">
+                {% for dag in dager %}
+                <div class="item">
+                    <span>Uke {{ dag.week }} {{ dag.day }}</span>
+                    <div>
+                        <span>
+                            {{ dag.dishname }} - {{ dag.price }}
+                        </span> 
+                    </div>
+                    <div>
+                        <a href="{{ url_for('dUpdate', id=dag.id)}}">Endre</a>
+                        <a href="{{ url_for('dDelete', id=dag.id)}}">Slett</a>
+                    </div>
+                </div>
+                {% endfor %}
+                <br>
+            </div>
+            <div id="smallForm" class="formses">
+                <form action="/retter" method="POST" class="menyform">
+                    {{ smForm.hidden_tag() }}
+                    {{ smForm.name.label }}
+                    {{ smForm.name() }}
+                    <br> <br>
+                    {{ smForm.drink.label }}
+                    {{ smForm.drink }}
+                    <br> <br>
+                    {{ smForm.price.label }}
+                    {{ smForm.price() }}
+                    <br><br> 
+                    {{ smForm.submit() }}
+                </form>
+                <br><br>
+            </div>
+            <br>
+            <div id="smalls" class="listes">
+                {% for small in smretter %}
+                    <div id="smItem">
+                        <span>
+                            {{ small.name }} - {{ small.price }}
+                        </span> 
+                        <br><a class="link" href="{{ url_for('smUpdate', id=small.id)}}">Endre</a>
+                        </span> <a class="link" href="{{ url_for('smDelete', id=small.id)}}">Slett</a>
+                        <br>
+                    </div>
+                {% endfor %}
+                <br>
+            </div>
+
+        </div>
+<br>
+        <div>
+            <a href="{{ url_for('logout')}}">Logg ut</a>
+        </div>
+
+        <div id="footer">
+            <span class="footertext">Bare for ansatte:</span>
+            <a href="{{url_for('user')}} " class="footertext">
+                <img src="{{ url_for('static', filename='img/settings.png') }}">
+            </a>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script/add_rett.js') }}" ></script>
+</body>
+</html>

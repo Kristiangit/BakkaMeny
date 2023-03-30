@@ -1,0 +1,286 @@
+:root {
+    --bg: #e4e4e4;
+    --header: #F79E13;
+    --headtext: #123B6D;
+    --maintext: #4E598C;
+    --border: #E8A4A4;
+    --oraborder: #F0B267;
+    --headborder: #FCAF58;
+}
+
+body {
+    background-color: var(--bg);
+    font-family: 'Futura';
+    color: var(--maintext);
+}
+
+#container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 99.6vw;
+    min-height: 100vh;
+}
+
+#plan {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#nav {
+    width: 100vw;
+    height: 11vh;
+    background-color: var(--header);
+    color: var(--headtext);
+    font-size: 40pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid var(--headborder);
+    margin-bottom: 5vh;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    color: var(--maintext);
+}
+
+.lower {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    color: var(--maintext);
+    margin: 4vw;
+}
+
+.rettbox1 {
+    background-color: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    width: fit-content;
+    height: fit-content;
+    padding: 3vw;
+    min-width: 40vw;
+    max-width: 50vw;
+    min-height: 45vh;
+    /* max-height: 75vh; */
+    position: relative;
+    color: var(--maintext);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.rettbox2 {
+    background-color: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    width: fit-content;
+    height: fit-content;
+    min-width: 20vw;
+    max-width: 23vw;
+    max-height: 60vh;
+    position: relative;
+    color: var(--maintext);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#dagnavn {
+    font-size: 30pt;
+    margin-top: 3vh;
+    margin-bottom: 1vh;
+    text-shadow: 0 3px #00000016;
+}
+
+.dagnavn2 {
+    font-size: 26pt;
+    margin-top: 3vh;
+    margin-bottom: 1vh;
+}
+
+#rett {
+    font-size: 22pt;
+    margin-top: 2vh;
+    margin-bottom: 1vh;
+}
+
+.rett2 {
+    font-size: 22pt;
+    margin-top: 2vh;
+    margin-bottom: 5px;
+}
+
+#rettimg1 {
+    max-width: 35vw;
+    max-height: 45vh;
+    border: 1px solid var(--maintext);
+    border-radius: 15px;
+    z-index: 1;
+}
+
+.rettimg2 {
+    max-width: 17vw;
+    max-height: 30vh;
+    border: 1px solid var(--maintext);
+    border-radius: 15px;
+}
+
+#allergi {
+    font-size: 12pt;
+    border: 2px solid var(--oraborder);
+    max-width: 25vw;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    margin-top: -25px;
+    background-color: #fff;
+    z-index: 2;
+}
+
+.allergi2 {
+    color: #FFFFFF;
+}
+
+#info {
+    width: 35px;
+}
+
+.info {
+    margin-top: 5px;
+    width: 30px;
+}
+
+#pris {
+    font-size: 24pt;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.pris {
+    font-size: 24pt;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#footer {
+    position: static;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    width: 100vw;
+    height: 10vh;
+    background-color: #fff;
+    border-top: 2px solid var(--maintext);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vh;
+    flex-shrink: 0;
+}
+
+.footertext {
+    width: fit-content;
+}
+
+#meny-layout {
+    width: 90vw;
+    margin-top: 8vh;
+    margin-bottom: 4vh;
+    text-align: center;
+    background-color: #fff;
+    height: fit-content;
+    border: 1px solid #800000;
+    border-radius: 30px;
+    font-size: 28pt;
+
+}
+
+@media screen and (max-width: 700px) {
+    #nav {
+        font-size: 30pt;
+    }
+
+    #info {
+        margin-right: 10px;
+    }
+
+    .rettbox1 {
+        max-width: 80vw;
+        max-height: 70vh;
+    }
+
+    #dagnavn {
+        font-size: 35pt;
+    }
+
+    #rett {
+        font-size: 30pt;
+    }
+
+    #rettimg1 {
+        margin-top: 3vh;
+        max-width: 76vw;
+        max-height: 40vh;
+    }
+
+    #allergi {
+        margin-top: 4vh;
+        max-width: 75vw;
+    }
+
+    #pris {
+        font-size: 28pt;
+        margin-top: 4vh;
+        margin-bottom: 5vh;
+    }
+
+    .lower {
+        display: none;
+    }
+}
+
+.link{
+    color: inherit;
+    text-decoration: none;
+}
+
+.listes {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.item{
+    margin: 10px;   
+}
+.maintext{
+    color: var(--maintext);
+}
+
+#smItem {
+    margin: 1vh;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bakka Kantina - Logg inn</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+        <link rel= "stylesheet" type= "text/css" href="{{ url_for('static', filename='styles/login.css') }}">
+        <!-- I hate all people of all races of all worlds. I am an edgy edgelord and the coolest sigma in the universe. Morbius is my favorite movie and it has my favorite scene. You know the one where Morbius stops the fight, says "It's morbin time!" and then morbed all over the bad guys! Greatest scene in cinema!-->
+
+    </head>
+
+<body>
+    <div id="container">
+        <div id="nav">
+            <a href="{{url_for('index')}}" class="link">
+                <span id="head">Bakka Kantina</span>
+            </a>
+        </div>
+            {% for message in get_flashed_messages() %}
+        <div>
+                {{ message }}
+        </div>
+            {% endfor %}
+
+
+            {% if slett  == True %}
+            <div>
+                <span>
+                    VIL DU SLETTE ALLE PASSORD?
+                </span>
+            </div>
+
+            {% endif %}
+        <div class="rettbox1">
+            <br>
+            <form  method="post" name="addU">
+                <label for="pword">Passordet:</label>
+                <input type="password" name="pword" id="input">
+
+                <br><br>
+                <input type="submit" value="Lag nytt passord">
+
+            </form>
+
+
+        </div>
+
+        <div id="footer">
+            <span class="footertext">Bare for ansatte:</span>
+            <a href="{{url_for('login')}} " class="footertext">
+                <img src="{{ url_for('static', filename='img/settings.png') }}">
+            </a>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script/login.js') }}" ></script>
+</body>
+</html>
