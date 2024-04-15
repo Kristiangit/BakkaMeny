@@ -7,7 +7,7 @@ from wtforms import StringField, SubmitField, RadioField, SelectField, IntegerFi
 from wtforms.validators import DataRequired, Optional, NumberRange
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
-from scraper33 import scrapeImg
+# from scraper33 import scrapeImg
 
 app = Flask(__name__, template_folder='./templates', static_folder='./static')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///kantine.db' ## lage databasen
@@ -15,7 +15,10 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'kantinepassord'
 
 if __name__ == "__main__":
+    print(3000)
     app.run(port=3000, debug=True)
+
+print("NONO")
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -118,6 +121,7 @@ class DagRettForm(FlaskForm):
 
 @app.route('/')
 def index():
+        print("index")
         smretter = SmVare.query.order_by(SmVare.id)
         dager = DagPlan.query.filter_by(week=2)
         return render_template("index.html", smretter=smretter, dager=dager)
@@ -329,7 +333,7 @@ def smDelete(id):
 
 # legge til nytt passord
 @app.route('/passord', methods=['POST', 'GET'])
-@login_required
+# @login_required
 def user():
     if request.method == "POST":
         password = request.form['pword']
@@ -381,7 +385,7 @@ def testing():
     return render_template("display.html", retter = retter) 
 
 #export FLASK_ENV=development
-#flask run
+#flask run --debug
 
 
 

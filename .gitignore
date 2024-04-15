@@ -3,3 +3,4 @@ migrations/
 .DS_Store
 __pycache__/
 chromedriver_mac64/
+dockerfile

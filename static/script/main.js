@@ -53,6 +53,7 @@ CheckSide();
 ChangeDays();
 
 prev.addEventListener("click", function() {
+    console.log(Focus_Day, "lll")
     if (Focus_Day == 4 && gone == true) {
         next.style.display = "flex";
         gone = false;
@@ -69,6 +70,7 @@ prev.addEventListener("click", function() {
 });
 
 next.addEventListener("click", function() {
+    console.log(Focus_Day, "rrr")
     if (Focus_Day == 0 && gone) {
         prev.style.display = "flex";
         gone = false;
@@ -100,7 +102,9 @@ function ChangeDays() {
             // }
         }
     } else if (gone && Focus_Day == 0) {
+        console.log(FocusedPlan, Focus_Day)
         for (let i = 0; i < 3; i++) {
+            console.log("focus, ", i)
             FocusedPlan[i].textContent = WeekPlan[Focus_Day][i];
             // if (i != 3) {
                 RightPlan[i].textContent = WeekPlan[Right_Day][i];

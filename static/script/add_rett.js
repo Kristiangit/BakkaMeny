@@ -39,8 +39,8 @@ function imageSearch(){
     const nameInput = hForm.children
     console.log(nameInput)
     let query = nameInput.value;
-    const queryURL = {{ url_for("Scrape", query=query)|tojson }} 
+    // const queryURL = {{ url_for("Scrape", query=query)|tojson }} 
 
     fetch("{{ url_for('Scrape', query="+query+"}}")
-};
+}
 

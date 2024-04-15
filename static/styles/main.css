@@ -33,7 +33,7 @@ body {
 }
 
 #nav {
-    width: 100vw;
+    width: 100%;
     height: 11vh;
     background-color: var(--header);
     color: var(--headtext);
@@ -41,7 +41,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 3px solid var(--headborder);
+    border-top: 3px solid var(--headborder);
+    border-bottom: 3px solid var(--headborder);
 }
 
 #main {
